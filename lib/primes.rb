@@ -17,7 +17,7 @@ class Primes
     (2..s).each do |i|
       if (is_prime[i])
         result << i
-        j=2*i
+        j = 2*i
         while j<s do
           is_prime[j] = false # multiple is not prime
           j += i
