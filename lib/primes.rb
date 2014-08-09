@@ -1,8 +1,7 @@
 class Primes
 
   def self.generate(max_value)
-    result = Array.new
-    return result if max_value < 2
+    return [] if max_value < 2
 
     # declarations
     is_prime = Array.new(&:false) # array of primes, false by default
@@ -11,19 +10,19 @@ class Primes
       is_prime[i] = true
     end
 
-    sieve(is_prime, result, is_prime_size)
-
-    return result
+    return sieve(is_prime, is_prime_size)
   end
 
   private
-  def self.sieve(is_prime_array, result_array, is_prime_size)
+  def self.sieve(is_prime_array, is_prime_size)
+    result = Array.new
     (2..is_prime_size).each do |i|
       if (is_prime_array[i])
-        result_array << i
+        result << i
         remove_multiples(i, is_prime_array, is_prime_size)
       end
     end
+    result
   end
 
   def self.remove_multiples(prime, is_prime_array, is_prime_size)
