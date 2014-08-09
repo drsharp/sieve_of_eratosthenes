@@ -10,7 +10,12 @@ describe Primes do
     expect(primes.length).to eq(0)
   end
 
-  specify "Single" do
+  specify "ZeroOne" do
+    primes = Primes.generate(1)
+    expect(primes.length).to eq(0)
+  end
+
+  specify "ZeroTwo" do
     primes = Primes.generate(2)
     expect(primes.length).to eq(1)
     expect(primes.include?(2)).to be(true)
