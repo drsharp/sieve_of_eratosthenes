@@ -2,20 +2,7 @@ class Primes
 
   def self.generate(max_value)
     result = Array.new
-
-    primes = generate_array(max_value)
-    primes.length.times do |i|
-      result << primes[i]
-    end
-
-    return result
-  end
-
-  private
-
-  # NOTE: this method is obsolete; use generate instead
-  def self.generate_array(max_value)
-    return [] if max_value < 2
+    return result if max_value < 2
 
     # declarations
     s = max_value + 1 # size of array
@@ -55,7 +42,11 @@ class Primes
       end
     end
 
-    return primes
+    primes.length.times do |i|
+      result << primes[i]
+    end
+
+    return result
   end
 
 end
