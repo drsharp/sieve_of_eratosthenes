@@ -14,20 +14,14 @@ class Primes
     is_prime[0] = is_prime[1] = false
 
     # sieve
-    (2..(Math.sqrt(s).to_i+1)).each do |i|
+    (2..s).each do |i|
       if (is_prime[i])
+        result << i
         j=2*i
         while j<s do
           is_prime[j] = false # multiple is not prime
           j += i
         end
-      end
-    end
-
-    # move the primes into the result
-    s.times do |i|
-      if (is_prime[i])
-        result << i
       end
     end
 
