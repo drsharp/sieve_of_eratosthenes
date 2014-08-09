@@ -5,13 +5,11 @@ class Primes
     return result if max_value < 2
 
     # declarations
-    is_prime = {} # array of primes
+    is_prime = Array.new(&:false) # array of primes, false by default
     is_prime_size = max_value + 1 # size of array of primes
     is_prime_size.times do |i|
       is_prime[i] = true
     end
-
-    is_prime[0] = is_prime[1] = false
 
     # sieve
     (2..is_prime_size).each do |i|
