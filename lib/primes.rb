@@ -22,14 +22,6 @@ class Primes
       end
     end
 
-    # how many primes are there?
-    count = 0
-    s.times do |i|
-      if (is_prime[i])
-        count += 1 # bump count
-      end
-    end
-
     # move the primes into the result
     s.times do |i|
       if (is_prime[i])
