@@ -1,32 +1,33 @@
 class Primes
 
-  def self.generate(max_value)
-    return [] if max_value < 2
-
-    # declarations
-    is_prime = Array.new(&:false) # array of primes, false by default
-    is_prime_size = max_value + 1 # size of array of primes
-    is_prime_size.times {|i| is_prime[i] = true }
-
-    return sieve(is_prime, is_prime_size)
+  def initialize(max_value)
+    @is_prime = Array.new(&:false) # array of primes, false by default
+    @is_prime_size = max_value + 1 # size of array of primes
+    @is_prime_size.times {|i| @is_prime[i] = true }
   end
 
-  private
-  def self.sieve(is_prime_array, is_prime_size)
+  def self.generate(max_value)
+    return [] if max_value < 2
+    primes = Primes.new(max_value)
+    return primes.sieve
+  end
+
+  def sieve
     result = Array.new
-    (2..is_prime_size).each do |i|
-      if (is_prime_array[i])
+    (2..@is_prime_size).each do |i|
+      if (@is_prime[i])
         result << i
-        remove_multiples(i, is_prime_array, is_prime_size)
+        remove_multiples(i)
       end
     end
     result
   end
 
-  def self.remove_multiples(prime, is_prime_array, is_prime_size)
+  private
+  def remove_multiples(prime)
     j = 2*prime
-    while j < is_prime_size do
-      is_prime_array[j] = false
+    while j < @is_prime_size do
+      @is_prime[j] = false
       j += prime
     end
   end
