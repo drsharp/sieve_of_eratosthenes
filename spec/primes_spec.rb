@@ -5,24 +5,24 @@ describe Primes do
 
   KNOWN_PRIMES = [2,3,5,7,11,13,17,19,23,29]
 
-  specify "Test 2: List Zero" do
+  specify "Zero" do
     primes = Primes.generate(0)
     expect(primes.length).to eq(0)
   end
 
-  specify "Test 4: List Single" do
+  specify "Single" do
     primes = Primes.generate(2)
     expect(primes.length).to eq(1)
     expect(primes.include?(2)).to be(true)
   end
 
-  specify "Test 6: List Prime" do
+  specify "Prime" do
     cent_list = Primes.generate(100)
     expect(cent_list.length).to eq(25)
     expect(cent_list[24]).to eq(97)
   end
 
-  specify "Test 8: List Basic" do
+  specify "Basic" do
     primes = Primes.generate(KNOWN_PRIMES[KNOWN_PRIMES.length - 1])
     expect(primes.length).to eq(KNOWN_PRIMES.length)
 
@@ -31,7 +31,7 @@ describe Primes do
     end
   end
 
-  specify "Test 10: List Lots" do
+  specify "Lots" do
     bound = 10101
     primes = Primes.generate(bound)
 
