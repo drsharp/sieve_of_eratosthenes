@@ -6,19 +6,18 @@ class Primes
 
     # declarations
     s = max_value + 1 # size of array
-    f = {} # array of booleans
+    is_prime = {}
     s.times do |i|
-      f[i] = true
+      is_prime[i] = true
     end
 
-    # get rid of known nonprimes
-    f[0] = f[1] = false
+    is_prime[0] = is_prime[1] = false
 
     # sieve
     (2..(Math.sqrt(s).to_i+1)).each do |i|
       j=2*i
       while j<s do
-        f[j] = false # multiple is not prime
+        is_prime[j] = false # multiple is not prime
         j += i
       end
     end
@@ -26,7 +25,7 @@ class Primes
     # how many primes are there?
     count = 0
     s.times do |i|
-      if (f[i]) # if prime
+      if (is_prime[i])
         count += 1 # bump count
       end
     end
@@ -36,7 +35,7 @@ class Primes
     # move the primes into the result
     j=0
     s.times do |i|
-      if (f[i]) # if prime
+      if (is_prime[i])
         primes[j] = i
         j += 1
       end
