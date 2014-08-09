@@ -30,19 +30,11 @@ class Primes
       end
     end
 
-    primes = Array.new
-
     # move the primes into the result
-    j=0
     s.times do |i|
       if (is_prime[i])
-        primes[j] = i
-        j += 1
+        result << i
       end
-    end
-
-    primes.length.times do |i|
-      result << primes[i]
     end
 
     return result
