@@ -15,10 +15,12 @@ class Primes
 
     # sieve
     (2..(Math.sqrt(s).to_i+1)).each do |i|
-      j=2*i
-      while j<s do
-        is_prime[j] = false # multiple is not prime
-        j += i
+      if (is_prime[i])
+        j=2*i
+        while j<s do
+          is_prime[j] = false # multiple is not prime
+          j += i
+        end
       end
     end
 
