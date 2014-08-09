@@ -15,15 +15,20 @@ class Primes
     (2..is_prime_size).each do |i|
       if (is_prime[i])
         result << i
-        j = 2*i
-        while j < is_prime_size do
-          is_prime[j] = false # multiple is not prime
-          j += i
-        end
+        remove_multiples(i, is_prime, is_prime_size)
       end
     end
 
     return result
+  end
+
+  private
+  def self.remove_multiples(prime, is_prime_array, is_prime_size)
+    j = 2*prime
+    while j < is_prime_size do
+      is_prime_array[j] = false
+      j += prime
+    end
   end
 
 end
