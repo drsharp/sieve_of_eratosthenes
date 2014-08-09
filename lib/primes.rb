@@ -6,9 +6,7 @@ class Primes
     # declarations
     is_prime = Array.new(&:false) # array of primes, false by default
     is_prime_size = max_value + 1 # size of array of primes
-    is_prime_size.times do |i|
-      is_prime[i] = true
-    end
+    is_prime_size.times {|i| is_prime[i] = true }
 
     return sieve(is_prime, is_prime_size)
   end
