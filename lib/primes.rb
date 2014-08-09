@@ -11,18 +11,21 @@ class Primes
       is_prime[i] = true
     end
 
-    # sieve
-    (2..is_prime_size).each do |i|
-      if (is_prime[i])
-        result << i
-        remove_multiples(i, is_prime, is_prime_size)
-      end
-    end
+    sieve(is_prime, result, is_prime_size)
 
     return result
   end
 
   private
+  def self.sieve(is_prime_array, result_array, is_prime_size)
+    (2..is_prime_size).each do |i|
+      if (is_prime_array[i])
+        result_array << i
+        remove_multiples(i, is_prime_array, is_prime_size)
+      end
+    end
+  end
+
   def self.remove_multiples(prime, is_prime_array, is_prime_size)
     j = 2*prime
     while j < is_prime_size do
