@@ -2,20 +2,17 @@ class Primes
 
   def initialize(max_value)
     @max_value = max_value
-    @is_prime = Array.new(&:false) # array of primes, false by default
-    @is_prime_size = max_value + 1 # size of array of primes
-    @is_prime_size.times {|i| @is_prime[i] = true }
+    @is_prime = Array.new(max_value+1, true)
   end
 
   def self.generate(max_value)
-    primes = Primes.new(max_value)
-    return primes.sieve
+    Primes.new(max_value).sieve
   end
 
   def sieve
     return [] if @max_value < 2
     result = Array.new
-    (2..@is_prime_size).each do |i|
+    (2..@is_prime.length).each do |i|
       if (@is_prime[i])
         result << i
         remove_multiples(i)
@@ -27,7 +24,7 @@ class Primes
   private
   def remove_multiples(prime)
     j = 2*prime
-    while j < @is_prime_size do
+    while j < @is_prime.length do
       @is_prime[j] = false
       j += prime
     end
