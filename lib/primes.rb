@@ -11,7 +11,8 @@ class Primes
     return result
   end
 
-
+  private
+  
   # NOTE: this method is obsolete; use generate instead
   def self.generate_array(max_value)
 
